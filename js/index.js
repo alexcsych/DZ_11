@@ -67,7 +67,6 @@ function createNewsHeader(headerBgSrc, title) {
 
 function createNewsHeaderLikeBtn() {
   const likeNewsBtn = document.createElement("button");
-  // likeNewsBtn.classList.add("likeBtnOn");
   likeNewsBtn.innerHTML = '<i class="far fa-heart"></i>';
   likeNewsBtn.onclick = function () {
     likeNewsBtn.classList.toggle("likeBtnOn");
@@ -105,44 +104,3 @@ function createNewsDate(date) {
   newsDate.textContent = date;
   return newsDate;
 }
-
-//  newsHeader.innerHTML = `<button class="likeBtn"><i class="fas fa-trash-alt"></i></button><img class="newsBgImg" src="${headerBgSrc}"></img><h2 class="newsHeaderTitle">${title}</h2><button class="removeBtn"><i class="fas fa-trash-alt"></i></button>`;
-
-// function createNewsHeaderBgImg(src, alt) {
-
-//   const newsBgImgEl = document.createElement("img");
-//   newsBgImgEl.classList.add("newsBgImg");
-//   newsBgImgEl.src = src;
-//   newsBgImgEl.alt = alt;
-//   return newsBgImgEl;
-// }
-
-// function createNewsHeader(title) {
-//   const newsHeaderEl = document.createElement("h1");
-//   newsHeaderEl.classList.add("newsHeaderEl");
-//   newsHeaderEl.textContent = title;
-//   newsHeaderEl.classList.add("newsHeader");
-//   return newsHeaderEl;
-// }
-
-// function createRemoveBtn() {
-//   const removeNewsBtn = document.createElement("button");
-//   removeNewsBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
-//   removeNewsBtn.onclick = (e) => {
-//     e.target.closest(".newsListItem").remove();
-//   };
-//   return removeNewsBtn;
-// }
-
-// function createNewsListItem({ title, headerBgSrc, category, body, date }) {
-//   const usersListItemEl = document.createElement("li");
-//   newsListItemEl.classList.add("newsListItem");
-
-//   newsListItemEl.append(
-//     createUserPhoto(photoSrc, `${firstName} ${lastName}`),
-//     createUserName(`${firstName} ${lastName}`),
-//     createUserAge(age),
-//     createRemoveBtn()
-//   );
-//   return usersListItemEl;
-// }
