@@ -48,39 +48,91 @@ function createNewsListItem({ title, headerBgSrc, category, body, date }) {
   newsListItemEl.classList.add("newsListItem");
 
   newsListItemEl.append(
-    createNewsHeaderBgImg(headerBgSrc, title),
-    createNewsHeader(title),
-    // createNewsName(`${firstName} ${lastName}`),
-    // createNewsAge(age),
-    createRemoveBtn()
+    createNewsHeader(headerBgSrc, title),
+    createNewsHeaderLikeBtn(),
+    createNewsHeaderRemoveBtn(),
+    createNewsContentCategory(category),
+    createNewsContent(body),
+    createNewsDate(date)
   );
   return newsListItemEl;
 }
 
-function createNewsHeaderBgImg(src, alt) {
-  const newsBgImgEl = document.createElement("img");
-  newsBgImgEl.classList.add("newsBgImg");
-  newsBgImgEl.src = src;
-  newsBgImgEl.alt = alt;
-  return newsBgImgEl;
+function createNewsHeader(headerBgSrc, title) {
+  const newsHeader = document.createElement("div");
+  newsHeader.classList.add("newsHeader");
+  newsHeader.innerHTML = `<img class="newsBgImg" src="${headerBgSrc}"></img><h2 class="newsHeaderTitle">${title}</h2>`;
+  return newsHeader;
 }
 
-function createNewsHeader(title) {
-  const newsHeaderEl = document.createElement("h1");
-  newsHeaderEl.classList.add("newsHeaderEl");
-  newsHeaderEl.textContent = title;
-  newsHeaderEl.classList.add("newsHeader");
-  return newsHeaderEl;
+function createNewsHeaderLikeBtn() {
+  const likeNewsBtn = document.createElement("button");
+  // likeNewsBtn.classList.add("likeBtnOn");
+  likeNewsBtn.innerHTML = '<i class="far fa-heart"></i>';
+  likeNewsBtn.onclick = function () {
+    likeNewsBtn.classList.toggle("likeBtnOn");
+  };
+  return likeNewsBtn;
 }
 
-function createRemoveBtn() {
+function createNewsHeaderRemoveBtn() {
   const removeNewsBtn = document.createElement("button");
+  removeNewsBtn.classList.add("removeBtn");
   removeNewsBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
   removeNewsBtn.onclick = (e) => {
     e.target.closest(".newsListItem").remove();
   };
   return removeNewsBtn;
 }
+
+function createNewsContentCategory(category) {
+  const contentCategory = document.createElement("h3");
+  contentCategory.classList.add("ContentCategory");
+  contentCategory.textContent = category.toUpperCase();
+  return contentCategory;
+}
+
+function createNewsContent(body) {
+  const newsContent = document.createElement("p");
+  newsContent.classList.add("Content");
+  newsContent.textContent = body;
+  return newsContent;
+}
+
+function createNewsDate(date) {
+  const newsDate = document.createElement("div");
+  newsDate.classList.add("Date");
+  newsDate.textContent = date;
+  return newsDate;
+}
+
+//  newsHeader.innerHTML = `<button class="likeBtn"><i class="fas fa-trash-alt"></i></button><img class="newsBgImg" src="${headerBgSrc}"></img><h2 class="newsHeaderTitle">${title}</h2><button class="removeBtn"><i class="fas fa-trash-alt"></i></button>`;
+
+// function createNewsHeaderBgImg(src, alt) {
+
+//   const newsBgImgEl = document.createElement("img");
+//   newsBgImgEl.classList.add("newsBgImg");
+//   newsBgImgEl.src = src;
+//   newsBgImgEl.alt = alt;
+//   return newsBgImgEl;
+// }
+
+// function createNewsHeader(title) {
+//   const newsHeaderEl = document.createElement("h1");
+//   newsHeaderEl.classList.add("newsHeaderEl");
+//   newsHeaderEl.textContent = title;
+//   newsHeaderEl.classList.add("newsHeader");
+//   return newsHeaderEl;
+// }
+
+// function createRemoveBtn() {
+//   const removeNewsBtn = document.createElement("button");
+//   removeNewsBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+//   removeNewsBtn.onclick = (e) => {
+//     e.target.closest(".newsListItem").remove();
+//   };
+//   return removeNewsBtn;
+// }
 
 // function createNewsListItem({ title, headerBgSrc, category, body, date }) {
 //   const usersListItemEl = document.createElement("li");
